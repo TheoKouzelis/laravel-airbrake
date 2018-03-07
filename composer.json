@@ -24,7 +24,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Kouz\\Providers\\AirbrakeServiceProvider"
+                "Kouz\\LaravelAirbrake\\AirbrakeServiceProvider"
             ]
         }
     }
