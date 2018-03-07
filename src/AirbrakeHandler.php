@@ -1,6 +1,6 @@
 <?php
 
-namespace Kouz\Providers;
+namespace Kouz\LaravelAirbrake;
 
 use Airbrake\Notifier;
 use Illuminate\Contracts\Foundation\Application;

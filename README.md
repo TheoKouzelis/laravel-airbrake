@@ -15,13 +15,14 @@ For Laravel >=5.5 the package will be discoverd. For Laravel <=5.4 add package t
   //config/app.php
   
   'providers' => [
-    Kouz\Providers\AirbrakeServiceProvider::class,
+    Kouz\LaravelAirbrake\ServiceProvider::class,
   ],
 ```
 Publish and fill out the config/airbrake.php file with your ID and key.
 ```
-php artisan vendor:publish --provider="Kouz\Providers\AirbrakeServiceProvider"
+php artisan vendor:publish --provider="Kouz\LaravelAirbrake\ServiceProvider"
 ```
+
 ## Config
 The variables projectId and projectKey are required. Leave the rest empty to use Airbrake's default values.
 ```
@@ -38,6 +39,25 @@ The variables projectId and projectKey are required. Leave the rest empty to use
 ```
 
 ## Basic Usage
+### 5.6 Custom Channel
+Add the custom "airbrake" channel (outlined below) to config/logging.php. Then add the "airbrake" channel to the stack channel.
+```
+//config/logging.php
+
+    'channels' => [
+        'stack' => [
+            'driver' => 'stack',
+            'channels' => ['single', 'airbrake'],
+        ],
+
+        'airbrake' => [
+            'driver' => 'custom',
+            'via' => Kouz\LaravelAirbrake\AirbrakeLogger::class,
+            'level' => 'debug',
+        ],
+    ]
+```
+
 ### Exception Handler
 The easiest way to notify airbrake is through the laravel exception handler as shown in the following code snippet. Inject or make a new instance
 of a Airbrake\Notifier object then pass a exception to the notify function.
@@ -72,7 +92,7 @@ before the service providers are loaded. So it is necessary to directly use our 
 //bootstrap/app.php
 
 $app->configureMonologUsing(function($monolog) use ($app) {
-    $airbrakeNotifier = (new Kouz\Providers\AirbrakeHandler($app))->handle();
+    $airbrakeNotifier = (new Kouz\LaravelAirbrake\AirbrakeHandler($app))->handle();
     $monologHandler = new Airbrake\MonologHandler($airbrakeNotifier, Monolog\Logger::ERROR);
     $monolog->pushHandler($monologHandler);
 });

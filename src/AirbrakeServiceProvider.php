@@ -1,11 +1,11 @@
 <?php
 
-namespace Kouz\Providers;
+namespace Kouz\LaravelAirbrake;
 
 use Airbrake\Notifier;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
-class AirbrakeServiceProvider extends ServiceProvider
+class ServiceProvider extends BaseServiceProvider
 {
     /**
      * Bootstrap the application services.
