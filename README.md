@@ -9,7 +9,7 @@ For Laravel >=6.0.0, you will need to downgrade Monolog to version 1.
 ```
 composer require monolog/monolog ^1.22
 ```
-Them require this package via composer.
+Then require this package via composer.
 ```
 composer require kouz/laravel-airbrake
 ```
@@ -103,4 +103,24 @@ $app->configureMonologUsing(function($monolog) use ($app) {
     $monologHandler = new Airbrake\MonologHandler($airbrakeNotifier, Monolog\Logger::ERROR);
     $monolog->pushHandler($monologHandler);
 });
+```
+
+## Add User Details to Notice
+If you want to add user details to notice, you can use [addFilter](https://github.com/airbrake/phpbrake/blob/master/README.md#add-user-data-to-the-notice) method of [airbrake/phpbrake](https://github.com/airbrake/phpbrake) notifier (which this package depends on).
+
+After you initialize `$airbrakeNotifier` you can use this filter to add user details;
+
+```
+//app/Exceptions/Handler.php
+
+$airbrakeNotifier = \App::make('Airbrake\Notifier');
+if($user = auth()->user()) {
+    $airbrakeNotifier->addFilter(function ($notice) use ($user) {
+        $notice['context']['user']['id'] = $user->id;
+        $notice['context']['user']['name'] = $user->name;
+        $notice['context']['user']['email'] = $user->email;
+        return $notice;
+    });
+}
+$airbrakeNotifier->notify($exception);
 ```
