@@ -4,10 +4,15 @@
     "keywords": ["airbrake", "laravel"],
     "require": {
         "php": ">=5.4",
-        "airbrake/phpbrake": "^0.7.0",
-        "illuminate/support": "^5.0|^6.0",
-        "monolog/monolog": "^1.22"
+        "airbrake/phpbrake": "dev-fix/issue-97-monolog-2",
+        "illuminate/support": "^5.0|^6.0|^7.0"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/TheoKouzelis/phpbrake"
+        }
+    ],
     "license": "MIT",
     "authors": [
         {
