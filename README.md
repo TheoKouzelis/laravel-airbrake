@@ -5,11 +5,7 @@ This is a Laravel service provider for the latest Airbrake PHP package https://g
 The service provider will configure an instance of Airbrake\Notifier with an ID, key and environment name.
 
 ## Install
-For Laravel >=6.0.0, you will need to downgrade Monolog to version 1.
-```
-composer require monolog/monolog ^1.22
-```
-Them require this package via composer.
+Require this package via composer.
 ```
 composer require kouz/laravel-airbrake
 ```
