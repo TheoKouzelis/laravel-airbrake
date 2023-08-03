@@ -1,5 +1,5 @@
 {
-    "name": "kouz/laravel-airbrake",
+    "name": "coamw2/laravel-airbrake",
     "description": "Laravel service provider for Airbrake https://github.com/airbrake/phpbrake",
     "keywords": ["airbrake", "laravel"],
     "require": {
@@ -12,6 +12,10 @@
         {
             "name": "Theo Kouzelis",
             "email": "tkouzelis@outlook.com"
+        },
+        {
+            "name": "Andrew Wallis",
+            "email": "andrewmarkwallis@gmail.com"
         }
     ],
     "autoload": {
