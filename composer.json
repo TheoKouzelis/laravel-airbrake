@@ -1,17 +1,21 @@
 {
-    "name": "kouz/laravel-airbrake",
+    "name": "coamw2/laravel-airbrake",
     "description": "Laravel service provider for Airbrake https://github.com/airbrake/phpbrake",
     "keywords": ["airbrake", "laravel"],
     "require": {
         "php": ">=5.4",
-        "airbrake/phpbrake": "^0.8.0",
-        "illuminate/support": "^5.0|^6.0|^7.0|^8.0|^9.0"
+        "coamw2/phpbrake": "dev-master",
+        "illuminate/support": "^5.0|^6.0|^7.0|^8.0|^9.0|^10.0"
     },
     "license": "MIT",
     "authors": [
         {
             "name": "Theo Kouzelis",
             "email": "tkouzelis@outlook.com"
+        },
+        {
+            "name": "Andrew Wallis",
+            "email": "andrewmarkwallis@gmail.com"
         }
     ],
     "autoload": {
@@ -19,7 +23,7 @@
             "Kouz\\LaravelAirbrake\\": "src/"
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "extra": {
         "laravel": {
